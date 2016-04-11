@@ -30,3 +30,6 @@ The problem with the current taxi booking system lies in its decentralized and i
 - Picks up the customer and drops off at desired location
 - Receives payment via mobile transfer or cash 
 - Waits for the next request
+
+These two sets of functionality will be implemented in two separate apps using the same back-end to communicate with a central server by SMS.
+Initially we intend to develop the "rider" app interface for Android phones, and then implement other aspects of the project if time permits it.
