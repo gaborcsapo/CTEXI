@@ -10,7 +10,7 @@ Transportation poses a huge issue in developing countries. Due to the lack of ro
 The problem with the current taxi booking system lies in its decentralized and inefficient nature. As explained by Prof. Yaw, taxis usually wait for their passengers at taxi ranks and the only way to request a pickup is through a human operated dispatcher center. In the current system people have to go to the city center and wait for a long time for their cabs. The application solves this problem by providing an automated central allocation system, which matches each customer with the closest taxi driver, who can pick up the person at any desired location. We have the following functionality requirements for the prototype:
 
 
-The Rider
+### The Rider
 - Downloads app, inputs his/her contact information into local database
 - Clicks on “Book taxi”
 - Writes a short message to specify location (i.e. opposite of the school…)
@@ -21,7 +21,7 @@ The Rider
 - Mobile or cash payment
 
 
-The Driver
+### The Driver
 - Downloads app and registers as a driver
 - Sets availability to yes
 - Waits for a request to arrive
