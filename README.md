@@ -1,5 +1,9 @@
 # CTEXI Android App
 
+# First Release
+- Has the basic UI implementation, with buttons leading to the correct pages
+- Displays a static response when driver is requested
+
 ## Introduction
 
 Transportation poses a huge issue in developing countries. Due to the lack of road infrastructure, efficient communication channels and reliable providers getting around in these countries can become a hassle. Our project aims to improve a specific segment of transportation: taxis. Following Professor Nyarko’s recommendation, we set as our short term goal to create a prototype of an Android app, which allows users to book cabs through text messages (SMS). The system allocates the closest available cab driver to the user and shares essential information to provide a faster and more efficient service. The service has the potential of becoming the dominant player in the taxi industry in Ghana.
@@ -32,4 +36,7 @@ The problem with the current taxi booking system lies in its decentralized and i
 - Waits for the next request
 
 These two sets of functionality will be implemented in two separate apps using the same back-end to communicate with a central server by SMS.
-Initially we intend to develop the "rider" app interface for Android phones, and then implement other aspects of the project if time permits it.
+Initially we intend to develop the "rider" app interface for Android phones, and then implement the "driver" interface other aspects of the project if time permits it.
+
+
+
