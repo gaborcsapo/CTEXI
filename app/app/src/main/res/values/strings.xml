@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">CTEXI V1</string>
+    <string name="name">Your Name</string>
+    <string name="number">Phone Number</string>
+    <string name="message">Details on Location</string>
+    <string name="book">Book Taxi</string>
+    <string name="available">Set Available</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="driversummary">Are you a driver?</string>
+    <string name="driver">Driver?</string>
+    <string name="ridersummary">Are you a rider?</string>
+    <string name="rider">Rider?</string>
+    <string name="change">Change to ....</string>
+    <string name="language">Change Language</string>
+    <string name="info">Nullam vel arcu imperdiet, vehicula dolor vitae, sodales sem. Phasellus aliquet mollis viverra. Ut mattis nec ipsum eu blandit. Curabitur faucibus magna nec mauris blandit, ac fermentum felis euismod. Fusce ac nisi dictum, congue mauris vitae, maximus lacus. Proin sagittis euismod vestibulum. Morbi ultrices lectus vitae ornare facilisis. Nulla volutpat pellentesque libero. Ut hendrerit mauris sed orci tincidunt, eu blandit mauris consectetur. Curabitur ut ullamcorper nibh. Duis mattis felis et velit viverra ornare. Nunc id cursus risus. Nulla sem orci, tempor facilisis facilisis eu, euismod id mauris.Quisque fringilla ac massa et dictum. Cras ultricies eget dui vitae condimentum. Pellentesque sem sem, bibendum vel tortor et, aliquam sagittis lectus. Morbi non vulputate felis. In scelerisque, velit at eleifend malesuada, mi eros ultrices purus, eu ullamcorper eros dui et sem. Nam accumsan est enim, vel auctor leo ullamcorper ac. Vestibulum et cursus ex. Sed purus turpis, porta non felis a, luctus ultricies libero. Ut nec lorem risus. Vivamus id facilisis eros. Morbi vel imperdiet mi. In non lobortis lectus. Sed ac placerat arcu. Ut auctor lacus augue, eu malesuada tortor convallis et.</string>
+    <string name="title_activity_preference">Settings</string>
+    <string name="changeuser">Change User Type</string>
+    <string name="changeusersummary">Change from Driver to Rider or conversely.</string>
+    <string name="changelanguage">Change Language</string>
+    <string name="infotitle">Information</string>
+    <string name="ordertitle">Order Taxi</string>
+    <string name="settitle">Set Availability</string>
+    <string name="accept">Accept Request</string>
+    <string name="ETA">Estimated time of arrival</string>
+    <string name="clientname">Barack Obama</string>
+    <string name="clientnumber">+9715634578</string>
+    <string name="clientmessage">Next to school in the pub.</string>
+    <string name="cancel">Cancel Booking</string>
+    <string name="yourmessage">No message</string>
+    <string name="drivernumber">no number</string>
+    <string name="drivername">Your Driver: \nDonald Trump</string>
+    <string name="previous">Previous Booking</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyD2n3F0oVUxCwZJbq7YZHaeL6ZaktbEuXQ</string>
+</resources>
