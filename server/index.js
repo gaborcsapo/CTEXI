@@ -6,7 +6,13 @@ const PORT=80;
 
 //We need a function which handles requests and send response
 function handleRequest(request, response){
-    response.end(request.url);
+    var raw_data = request.url.slice(1);
+    var data_list = raw_data.split("|");
+    var response_str = "Parsed input line for line (separated by '|' characters):\n";
+    for (var i = 0; i < data_list.length; i ++) {
+        response_str += i + " " + data_list[i] + "\n";
+    }
+    response.end(response_str);
 }
 
 //Create a server

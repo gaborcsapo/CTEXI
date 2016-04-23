@@ -1,3 +1,4 @@
+# A simple script to make testing with Heroku simpler and less error prone
 git add *
 git commit -m "Fixed. Reference: $1"
 git push heroku master
