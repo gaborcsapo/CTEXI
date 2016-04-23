@@ -8,11 +8,12 @@ const PORT=80;
 function handleRequest(request, response){
     var raw_data = request.url.slice(1);
     var data_list = raw_data.split("|");
-    var response_str = "Parsed input line for line (separated by '|' characters):\n";
+    response.write("Parsed input line for line (separated by '|' characters):\n", 'ascii');
     for (var i = 0; i < data_list.length; i ++) {
-        response_str += i + " " + data_list[i] + "\n";
+        var tmp_str = "" + i + " " + data_list[i] + "\n";
+        response.write(tmp_str, 'ascii');
     }
-    response.end(response_str);
+    response.end();
 }
 
 //Create a server
