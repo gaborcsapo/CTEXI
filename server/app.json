@@ -1,0 +1,7 @@
+{
+  "name": "Node.js Basic HTTP Server",
+  "description": "A barebones Node.js app that returns the exact string given.",
+  "repository": "https://github.com/heroku/node-js-getting-started",
+  "keywords": ["node", "static"],
+  "image": "heroku/nodejs"
+}
