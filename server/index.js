@@ -4,14 +4,29 @@ var http = require('http');
 //Lets define a port we want to listen to
 const PORT=80; 
 
+//URL decoder
+function decode(str) {
+     return unescape(str.replace(/\_/g, " "));
+}
+
 //We need a function which handles requests and send response
 function handleRequest(request, response){
-    var raw_data = request.url.slice(1);
+    var info = {};
+    var raw_data = decode(request.url.slice(1));
     var data_list = raw_data.split("|");
-    response.write("Parsed input line for line (separated by '|' characters):\n", 'ascii');
-    for (var i = 0; i < data_list.length; i ++) {
-        var tmp_str = "" + i + " " + data_list[i] + "\n";
-        response.write(tmp_str, 'ascii');
+    if (data_list.length == 5) {
+        response.write("Parsed input line for line (separated by '|' characters):\n", 'ascii');
+        info['type']    = data_list[0];
+        info['lat']     = data_list[1];
+        info['lon']     = data_list[2];
+        info['phone']   = data_list[3];
+        info['message'] = data_list[4];
+        for (var key in info) {
+            var tmp_str = key + "\t" + info[key] + "\n";
+            response.write(tmp_str, 'ascii');
+        }
+    } else {
+        response.write("ERROR: Incorrect number of fields.\n");
     }
     response.end();
 }
