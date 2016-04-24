@@ -38,5 +38,19 @@ The problem with the current taxi booking system lies in its decentralized and i
 These two sets of functionality will be implemented in two separate apps using the same back-end to communicate with a central server by SMS.
 Initially we intend to develop the "rider" app interface for Android phones, and then implement the "driver" interface other aspects of the project if time permits it.
 
+## The Server
 
+The server runs on node.js. Currently it takes data over IP, but eventually it will be switched over to SMS.
 
+It takes in data in the following format:
+[type]|[latitude]|[longitude]|[phone#]|[message]
+
+Where the message could be the name, or the message, depending on the request type.
+
+### Types of request:
+- Type D: The driver's response.
+- Type R: The rider's request.
+- Type S: The driver's registration.
+- Type U: The driver's location update. (Automatic and regular)
+
+While its functionality is being developed, the server will send a reply with information about the request, but once it is fully functional the responses will be limited to riders' requests.
