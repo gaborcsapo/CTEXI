@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.student.ctexiv1.DriverActivities.DriverThirdActivity;
 import com.example.student.ctexiv1.R;
+import com.example.student.ctexiv1.UserClass;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -20,23 +21,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class DriverSecondActivity extends FragmentActivity implements OnMapReadyCallback{
+public class DriverSecondActivity extends UserClass implements OnMapReadyCallback{
 
     private GoogleMap mMap;
     String Name;
     String Number;
     String Message;
-
-    protected String loadPreference(String key){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getString(key, "null");
-    }
-    protected void savePreference(String key, String value) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(key, value);
-        editor.commit();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,31 +36,7 @@ public class DriverSecondActivity extends FragmentActivity implements OnMapReady
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        if ((getIntent().getStringExtra("name") != null)){
-            Name = getIntent().getStringExtra("name");
-            Number = getIntent().getStringExtra("number");
-            Message = getIntent().getStringExtra("message");
-        }
-
-        else if ((getIntent().getBooleanExtra("restore", false) == true)) {
-            Message = loadPreference("locationmessage");
-            Name = loadPreference("ridername");
-            Number = loadPreference("ridernumber");
-        }
-
-        ((TextView) findViewById(R.id.message)).setText(Message);
-        ((TextView) findViewById(R.id.ridername)).setText(Name);
-        ((TextView) findViewById(R.id.ridernumber)).setText(Number);
-
-    }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        loadNameNumberMessage();
     }
 
     public void onDecline(View view){
@@ -85,15 +51,12 @@ public class DriverSecondActivity extends FragmentActivity implements OnMapReady
         //sends accept to server
 
         Intent i = new Intent(this, DriverThirdActivity.class);
+
+        i.putExtra("PassedMessage", Message);
+        i.putExtra("PassedName", Name);
+        i.putExtra("PassedNumber", Number);
+
         startActivity(i);
         finish();
-    }
-
-    @Override
-    public void onBackPressed(){
-        savePreference("drivername", Name);
-        savePreference("drivernumber", Number);
-        savePreference("locationmessage", (String) ((TextView) findViewById(R.id.message)).getText());
-        super.onBackPressed();
     }
 }

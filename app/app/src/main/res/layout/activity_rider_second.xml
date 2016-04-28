@@ -8,14 +8,14 @@
     android:orientation="vertical"
     tools:context=".RiderActivities.RiderSecondActivity">
     <TextView
-        android:id="@+id/drivername"
+        android:id="@+id/name"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/drivername"
         android:textSize="50dp"/>
     <TextView
-        android:id="@+id/drivernumber"
+        android:id="@+id/number"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -8,13 +8,13 @@
     android:orientation="vertical"
     tools:context=".RiderActivities.RiderActivity">
     <TextView
-        android:id="@+id/ridername"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/clientname"
         android:textSize="50dp"/>
     <TextView
-        android:id="@+id/ridernumber"
+        android:id="@+id/number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/clientnumber"

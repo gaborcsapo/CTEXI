@@ -26,7 +26,7 @@ public class RiderActivity extends UserClass {
     protected void bookTaxi(View view){
         savePreferences();
         Intent i = new Intent(this, RiderWaitActivity.class);
-        i.putExtra("message", String.valueOf(((EditText) findViewById(R.id.message)).getText()));
+        i.putExtra("PassedMessage", String.valueOf(((EditText) findViewById(R.id.message)).getText()));
         startActivity(i);
     }
 

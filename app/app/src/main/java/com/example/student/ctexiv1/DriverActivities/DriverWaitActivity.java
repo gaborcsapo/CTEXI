@@ -22,9 +22,9 @@ public class DriverWaitActivity extends AppCompatActivity {
 
         Intent i = new Intent(this, DriverSecondActivity.class);
 
-        i.putExtra("message", "message");
-        i.putExtra("name", "Donald Trump");
-        i.putExtra("number", "12345678");
+        i.putExtra("PassedMessage", "message");
+        i.putExtra("PassedName", "Donald Trump");
+        i.putExtra("PassedNumber", "12345678");
 
         startActivity(i);
         finish();

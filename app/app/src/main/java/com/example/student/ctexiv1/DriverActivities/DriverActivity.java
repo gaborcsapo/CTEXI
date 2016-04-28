@@ -23,7 +23,6 @@ public class DriverActivity extends UserClass {
         loadSavedPreferences();
     }
 
-
     protected void setAvailable(View view) {
         startActivity(new Intent(this, DriverWaitActivity.class));
     }

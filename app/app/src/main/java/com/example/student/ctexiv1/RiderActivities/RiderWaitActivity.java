@@ -23,9 +23,9 @@ public class RiderWaitActivity extends AppCompatActivity {
 
         Intent i = new Intent(this, RiderSecondActivity.class);
 
-        i.putExtra("message", getIntent().getStringExtra("message"));
-        i.putExtra("name", "Donald Trump");
-        i.putExtra("number", "12345678");
+        i.putExtra("PassedMessage", getIntent().getStringExtra("message"));
+        i.putExtra("PassedName", "Donald Trump");
+        i.putExtra("PassedNumber", "12345678");
 
         startActivity(i);
         finish();
