@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 /**
@@ -58,5 +59,9 @@ public class UserClass extends AppCompatActivity{
             ((EditText) findViewById(R.id.name)).setText(name);
         if (!(number.equals("null")) )
             ((EditText) findViewById(R.id.number)).setText(number);
+    }
+
+    public void onCancel(View view){
+        finish();
     }
 }

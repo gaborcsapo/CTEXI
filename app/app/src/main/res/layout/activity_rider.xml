@@ -6,7 +6,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    tools:context="com.example.student.ctexiv1.RiderActivity">
+    tools:context=".RiderActivities.RiderActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

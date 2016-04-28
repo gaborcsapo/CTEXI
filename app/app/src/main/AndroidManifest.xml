@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.student.ctexiv1">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,6 +14,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -21,13 +24,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RiderActivity" />
-        <activity android:name=".DriverActivity" />
+        <activity android:name=".RiderActivities.RiderActivity" />
+        <activity android:name=".DriverActivities.DriverActivity" />
         <activity
             android:name=".PreferenceActivity"
             android:label="@string/title_activity_preference" />
-        <activity android:name=".DriverSecondActivity" />
-        <activity android:name=".RiderSecondActivity"></activity>
+        <activity android:name=".DriverActivities.DriverSecondActivity" />
+        <activity android:name=".RiderActivities.RiderSecondActivity" />
+        <activity android:name=".DriverActivities.DriverWaitActivity" />
+        <activity android:name=".RiderActivities.RiderWaitActivity" />
+        <activity android:name=".DriverActivities.DriverThirdActivity"></activity>
     </application>
 
 </manifest>

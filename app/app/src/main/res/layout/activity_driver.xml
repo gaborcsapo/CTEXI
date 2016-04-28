@@ -6,7 +6,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    tools:context="com.example.student.ctexiv1.DriverActivity">
+    tools:context=".DriverActivities.DriverActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

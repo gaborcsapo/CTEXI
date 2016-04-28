@@ -6,7 +6,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    tools:context="com.example.student.ctexiv1.RiderSecondActivity">
+    tools:context=".RiderActivities.RiderSecondActivity">
     <TextView
         android:id="@+id/drivername"
         android:freezesText="true"
@@ -32,5 +32,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/cancel"
-        android:onClick="cancel"/>
+        android:onClick="onCancel"/>
 </LinearLayout>

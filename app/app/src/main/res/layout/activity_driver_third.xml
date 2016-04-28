@@ -8,43 +8,26 @@
     android:orientation="vertical"
     tools:context=".RiderActivities.RiderActivity">
     <TextView
-        android:id="@+id/ridername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/clientname"
         android:textSize="50dp"/>
     <TextView
-        android:id="@+id/ridernumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/clientnumber"
         android:textSize="50dp"/>
     <TextView
-        android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/clientmessage"
         android:textSize="20dp"/>
-
-    <EditText
-        android:id="@+id/eta"
-        android:layout_width="match_parent"
-        android:inputType="textPassword|number"
-        android:layout_height="wrap_content"
-        android:hint="@string/ETA" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/accept"
-        android:onClick="onAccept"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/decline"
-        android:onClick="onDecline"/>
+        android:text="@string/cancel"
+        android:onClick="onCancel"/>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
