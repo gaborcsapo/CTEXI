@@ -8,29 +8,49 @@
     android:orientation="vertical"
     tools:context=".RiderActivities.RiderSecondActivity">
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/Name"
+        android:freezesText="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/driverannounce"
+        android:textSize="25dp"
+        android:layout_margin="10dp"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/Name"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/drivername"
-        android:textSize="50dp"/>
+        android:textSize="50dp"
+        android:textAlignment="center" />
     <TextView
-        android:id="@+id/number"
+        android:id="@+id/Number"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/drivernumber"
-        android:textSize="35dp"/>
+        android:textSize="35dp"
+        android:textAlignment="center" />
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/Message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:freezesText="true"
         android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/Name"
+        android:freezesText="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arrival"
+        android:textSize="25dp"
+        android:textAlignment="center" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/cancel"
-        android:onClick="onCancel"/>
+        android:onClick="onCancel"
+        android:layout_marginTop="30dp" />
 </LinearLayout>

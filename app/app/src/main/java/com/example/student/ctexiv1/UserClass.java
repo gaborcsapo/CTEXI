@@ -4,16 +4,31 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.appdatasearch.GetRecentContextCall;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import android.content.Context;
+import com.android.volley.Cache;
+import com.android.volley.Network;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 
 /**
  * Created by student on 4/17/16.
@@ -53,14 +68,14 @@ public class UserClass extends AppCompatActivity{
     }
 
     protected void savePreferences(){
-        savePreference("OwnName", String.valueOf(((EditText) findViewById(R.id.name)).getText()));
-        savePreference("OwnNumber", String.valueOf(((EditText) findViewById(R.id.number)).getText()));
+        savePreference("OwnName", String.valueOf(((EditText) findViewById(R.id.Name)).getText()));
+        savePreference("OwnNumber", String.valueOf(((EditText) findViewById(R.id.Number)).getText()));
     }
 
     public void saveBookingState(){
         savePreference("SavedName", Name);
         savePreference("SavedNumber", Number);
-        savePreference("LocationMessage", (String) ((TextView) findViewById(R.id.message)).getText());
+        savePreference("LocationMessage", (String) ((TextView) findViewById(R.id.Message)).getText());
         super.onBackPressed();
     }
 
@@ -73,9 +88,9 @@ public class UserClass extends AppCompatActivity{
         String name = loadPreference("OwnName");
         String number = loadPreference("OwnNumber");
         if (!(name.equals("null")) )
-            ((EditText) findViewById(R.id.name)).setText(name);
+            ((EditText) findViewById(R.id.Name)).setText(name);
         if (!(number.equals("null")) )
-            ((EditText) findViewById(R.id.number)).setText(number);
+            ((EditText) findViewById(R.id.Number)).setText(number);
     }
 
     public void loadNameNumberMessage(){
@@ -92,9 +107,9 @@ public class UserClass extends AppCompatActivity{
             Number = loadPreference("SavedNumber");
         }
 
-        ((TextView) findViewById(R.id.message)).setText(Message);
-        ((TextView) findViewById(R.id.name)).setText(Name);
-        ((TextView) findViewById(R.id.number)).setText(Number);
+        ((TextView) findViewById(R.id.Message)).setText(Message);
+        ((TextView) findViewById(R.id.Name)).setText(Name);
+        ((TextView) findViewById(R.id.Number)).setText(Number);
     }
 
     public void onMapReady(GoogleMap googleMap) {
@@ -109,4 +124,25 @@ public class UserClass extends AppCompatActivity{
     public void onCancel(View view){
         finish();
     }
+
+    public void ServerRequest(String request){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://stark-coast-40612.herokuapp.com/S|0.834|28.577|0097126352855|Chimamanda_Adichie";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("myTag", response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(stringRequest);
+    }
+
 }
