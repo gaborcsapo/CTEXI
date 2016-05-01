@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.student.ctexiv1.R;
+import com.example.student.ctexiv1.RequestSingleton;
 import com.example.student.ctexiv1.RiderActivities.RiderSecondActivity;
+import com.example.student.ctexiv1.Utils.ServerCallback;
 
 public class DriverWaitActivity extends AppCompatActivity {
 
@@ -18,16 +20,18 @@ public class DriverWaitActivity extends AppCompatActivity {
 
     protected void waitForRequest(){
 
-        //sends and updates location to server and waits for a request
+        final Intent i = new Intent(this, DriverSecondActivity.class);
+        RequestSingleton.getInstance(this).addToRequestQueue("nothing", new ServerCallback() {
+            @Override
+            public void onSuccess(String result) {
 
-        Intent i = new Intent(this, DriverSecondActivity.class);
+                i.putExtra("PassedMessage", "message");
+                i.putExtra("PassedName", "Donald Trump");
+                i.putExtra("PassedNumber", "12345678");
 
-        i.putExtra("PassedMessage", "message");
-        i.putExtra("PassedName", "Donald Trump");
-        i.putExtra("PassedNumber", "12345678");
-
-        startActivity(i);
-        finish();
+                startActivity(i);
+                finish();
+            }
+        });
     }
-
 }

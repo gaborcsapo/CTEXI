@@ -125,24 +125,4 @@ public class UserClass extends AppCompatActivity{
         finish();
     }
 
-    public void ServerRequest(String request){
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://stark-coast-40612.herokuapp.com/S|0.834|28.577|0097126352855|Chimamanda_Adichie";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("myTag", response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        queue.add(stringRequest);
-    }
-
 }

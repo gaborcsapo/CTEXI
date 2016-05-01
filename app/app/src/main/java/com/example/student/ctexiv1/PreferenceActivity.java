@@ -8,6 +8,7 @@ import android.preference.Preference;
 
 import com.example.student.ctexiv1.DriverActivities.DriverActivity;
 import com.example.student.ctexiv1.RiderActivities.RiderActivity;
+import com.example.student.ctexiv1.Utils.AppCompatPreferenceActivity;
 
 
 public class PreferenceActivity extends AppCompatPreferenceActivity {

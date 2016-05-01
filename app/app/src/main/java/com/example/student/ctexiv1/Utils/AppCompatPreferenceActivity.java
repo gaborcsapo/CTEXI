@@ -1,4 +1,4 @@
-package com.example.student.ctexiv1;
+package com.example.student.ctexiv1.Utils;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
