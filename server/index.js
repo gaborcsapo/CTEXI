@@ -6,9 +6,12 @@ var messageBirdKey= 'test_WKqa20Mhy44OIWt9Rv9TiDCKU';
 var http = require('http');
 var twilio = require('twilio');
 var messageBird = require('messagebird')(messageBirdKey);
-
+var express = require('express');
+var logger = require('morgan');
+var app = express();
+//app.use(logger());
 // Define the port to listen to (80 is the standard for http:// over IP)
-const PORT=8080; 
+const PORT=8000; 
 
 // List of drivers
 var drivers = [];
@@ -65,20 +68,6 @@ function handleList(data_list) {
     return response_text;
 }
 
-// The function which handles requests and send response
-function handleRequest(request, response){
-    var raw_data = decode(request.url.slice(1));
-    var data_list = raw_data.split('|');
-    var response_text = '';
-    if (data_list.length == 5) {
-        response_text = handleList(data_list);
-    } else {
-        response_text = 'ERROR: Incorrect number of fields.\n';
-    }
-    response.write(response_text, 'ascii');
-    response.end();
-}
-
 function calculateDistance(destination, point){
     var squareSum =Math.pow((destination.lat - point.lat),2) + Math.pow((destination.lng - point.lng));
     return (Math.sqrt(squareSum));
@@ -100,8 +89,23 @@ function sendMessage(recipients, message){
     });
 }
 
+// The function which handles requests and send response
+function handleRequest(request, response){
+    var raw_data = decode(request.url.slice(1));
+    var data_list = raw_data.split('|');
+    var response_text = '';
+    if (data_list.length == 5) {
+        response_text = handleList(data_list);
+    } else {
+        response_text = 'ERROR: Incorrect number of fields.\n';
+    }
+    response.write(response_text, 'ascii');
+    response.end();
+}
+
 //Create the server
-var server = http.createServer(handleRequest);
+app.all('*',handleRequest)
+var server = http.createServer(app);
 
 // Start the server
 server.listen(process.env.PORT || PORT, function(){
