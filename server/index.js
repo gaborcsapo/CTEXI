@@ -1,8 +1,14 @@
+/* CREDENTIALS */
+var messageBirdKey= 'test_WKqa20Mhy44OIWt9Rv9TiDCKU';
+
+
 // Import the HTTP module
 var http = require('http');
+var twilio = require('twilio');
+var messageBird = require('messagebird')(messageBirdKey);
 
 // Define the port to listen to (80 is the standard for http:// over IP)
-const PORT=80; 
+const PORT=8080; 
 
 // List of drivers
 var drivers = [];
@@ -79,6 +85,21 @@ function calculateDistance(destination, point){
 
 }
 
+function sendMessage(recipients, message){
+    var params = {
+        'originator': 'MessageBird',
+        'recipients': recipients, // recipients is an array
+        'body': message
+    };
+
+    messageBird.messages.create(params, function (err, data) {
+    if (err) {
+        return console.log(err);
+    }
+    console.log(data);
+    });
+}
+
 //Create the server
 var server = http.createServer(handleRequest);
 
@@ -87,3 +108,5 @@ server.listen(process.env.PORT || PORT, function(){
     // Triggered when server is listening.
     console.log('Server listening on: http://localhost:%s', PORT);
 });
+
+//sendMessage(['971563052935'], 'MessageBird working');
