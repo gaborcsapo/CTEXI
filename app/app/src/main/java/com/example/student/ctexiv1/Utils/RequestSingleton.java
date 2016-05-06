@@ -1,4 +1,4 @@
-package com.example.student.ctexiv1;
+package com.example.student.ctexiv1.Utils;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,7 +9,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.student.ctexiv1.Utils.ServerCallback;
 
 /**
  * Created by student on 5/1/16.
@@ -39,9 +38,9 @@ public class RequestSingleton {
         return mRequestQueue;
     }
 
-    public void addToRequestQueue(String req, final ServerCallback callback) {
+    public void addToGETRequestQueue(String req, final ServerCallback callback) {
 
-        String url ="https://stark-coast-40612.herokuapp.com/S|0.834|28.577|0097126352855|Chimamanda_Adichie";
+        String url ="https://stark-coast-40612.herokuapp.com/" + req;
 
         stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -53,7 +52,7 @@ public class RequestSingleton {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("myTag", "error");
+                Log.d("myTag", error.toString());
             }
         });
         getRequestQueue().add(stringRequest);

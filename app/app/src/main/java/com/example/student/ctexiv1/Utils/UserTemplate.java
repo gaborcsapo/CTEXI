@@ -1,4 +1,4 @@
-package com.example.student.ctexiv1;
+package com.example.student.ctexiv1.Utils;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.student.ctexiv1.PreferenceActivity;
+import com.example.student.ctexiv1.R;
 import com.google.android.gms.appdatasearch.GetRecentContextCall;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,8 +35,9 @@ import com.android.volley.toolbox.HurlStack;
 /**
  * Created by student on 4/17/16.
  */
-public class UserClass extends AppCompatActivity{
+public class UserTemplate extends AppCompatActivity{
 
+    protected GoogleMap mMap;
     protected String Name;
     protected String Number;
     protected String Message;
@@ -113,12 +116,18 @@ public class UserClass extends AppCompatActivity{
     }
 
     public void onMapReady(GoogleMap googleMap) {
-        GoogleMap mMap = googleMap;
+        mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    public void addMarker(double x, double y){
+        LatLng newmarker = new LatLng(x, y);
+        mMap.addMarker(new MarkerOptions().position(newmarker).title("Your rider is here"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(newmarker));
     }
 
     public void onCancel(View view){

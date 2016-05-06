@@ -1,20 +1,14 @@
 package com.example.student.ctexiv1.RiderActivities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.RiderActivities.RiderWaitActivity;
-import com.example.student.ctexiv1.UserClass;
+import com.example.student.ctexiv1.Utils.UserTemplate;
 
-public class RiderActivity extends UserClass {
+public class RiderActivity extends UserTemplate {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

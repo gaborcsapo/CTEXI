@@ -1,29 +1,16 @@
 package com.example.student.ctexiv1.DriverActivities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-import android.widget.TextView;
 
-import com.example.student.ctexiv1.DriverActivities.DriverThirdActivity;
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.UserClass;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
+import com.example.student.ctexiv1.Utils.UserTemplate;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class DriverSecondActivity extends UserClass implements OnMapReadyCallback{
+public class DriverSecondActivity extends UserTemplate implements OnMapReadyCallback{
 
-    private GoogleMap mMap;
     String Name;
     String Number;
     String Message;
@@ -37,6 +24,8 @@ public class DriverSecondActivity extends UserClass implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         loadNameNumberMessage();
+
+        addMarker(Double.parseDouble(getIntent().getStringExtra("PassedLat")), Double.parseDouble(getIntent().getStringExtra("PassedLong")));
     }
 
     public void onDecline(View view){
@@ -55,6 +44,8 @@ public class DriverSecondActivity extends UserClass implements OnMapReadyCallbac
         i.putExtra("PassedMessage", Message);
         i.putExtra("PassedName", Name);
         i.putExtra("PassedNumber", Number);
+        i.putExtra("PassedLat", Double.parseDouble(getIntent().getStringExtra("PassedLat")));
+        i.putExtra("PassedLong", Double.parseDouble(getIntent().getStringExtra("PassedLong")));
 
         startActivity(i);
         finish();

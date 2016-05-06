@@ -1,20 +1,13 @@
 package com.example.student.ctexiv1.DriverActivities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
-import com.example.student.ctexiv1.DriverActivities.DriverWaitActivity;
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.UserClass;
+import com.example.student.ctexiv1.Utils.UserTemplate;
 
-public class DriverActivity extends UserClass {
+public class DriverActivity extends UserTemplate {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

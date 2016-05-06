@@ -5,8 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.RequestSingleton;
-import com.example.student.ctexiv1.RiderActivities.RiderSecondActivity;
+import com.example.student.ctexiv1.Utils.RequestSingleton;
 import com.example.student.ctexiv1.Utils.ServerCallback;
 
 public class DriverWaitActivity extends AppCompatActivity {
@@ -21,13 +20,17 @@ public class DriverWaitActivity extends AppCompatActivity {
     protected void waitForRequest(){
 
         final Intent i = new Intent(this, DriverSecondActivity.class);
-        RequestSingleton.getInstance(this).addToRequestQueue("nothing", new ServerCallback() {
+        RequestSingleton.getInstance(this).addToGETRequestQueue("S|0.834|28.577|0097126352855|Chimamanda_Adichie", new ServerCallback() {
             @Override
             public void onSuccess(String result) {
 
-                i.putExtra("PassedMessage", "message");
-                i.putExtra("PassedName", "Donald Trump");
-                i.putExtra("PassedNumber", "12345678");
+                String[] parsedData = result.split("|");
+
+                i.putExtra("PassedMessage", parsedData[4]);
+                i.putExtra("PassedName", parsedData[5]);
+                i.putExtra("PassedNumber", parsedData[3]);
+                i.putExtra("PassedLat", parsedData[1]);
+                i.putExtra("PassedLong", parsedData[2]);
 
                 startActivity(i);
                 finish();

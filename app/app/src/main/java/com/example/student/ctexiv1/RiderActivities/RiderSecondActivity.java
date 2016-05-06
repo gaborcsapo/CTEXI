@@ -1,13 +1,11 @@
 package com.example.student.ctexiv1.RiderActivities;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
 
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.UserClass;
+import com.example.student.ctexiv1.Utils.UserTemplate;
 
-public class RiderSecondActivity extends UserClass {
+public class RiderSecondActivity extends UserTemplate {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
