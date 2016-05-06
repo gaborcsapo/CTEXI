@@ -43,14 +43,15 @@ Initially we intend to develop the "rider" app interface for Android phones, and
 The server runs on node.js. Currently it takes data over IP, but eventually it will be switched over to SMS.
 
 It takes in data in the following format:
-[type]|[latitude]|[longitude]|[phone#]|[message]
+[type]|[latitude]|[longitude]|[phone#]|[message]|[name]
 
 Where the message could be the name, or the message, depending on the request type.
 
 ### Types of request:
-- Type D: The driver's response.
-- Type R: The rider's request.
-- Type S: The driver's registration.
-- Type U: The driver's location update. (Automatic and regular)
+- S : Driver sends GET request to ask for a rider, response should be the rider he was matched with
+- U : Driver sends POST request to update his location in the database
+- D : Driver sends POST request to let the server know he accepted or declines the deal. The info of the driver shoudl be sent to the rider
+- R : Rider sends GET request to request a driver
+
 
 While its functionality is being developed, the server will send a reply with information about the request, but once it is fully functional the responses will be limited to riders' requests.
