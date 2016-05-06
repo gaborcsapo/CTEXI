@@ -21,31 +21,61 @@ function decode(str) {
      return unescape(str.replace(/\_/g, ' '));
 }
 
-function registerDriver(lat, lon, phone, name) {
-    var new_driver = {};
+function passengerRequestsDriver(userData){
+
+}
+
+function driverRequestsDriver(userData){
+
+}
+
+function handlePassengerResponse(userData){
+    if (userData['type']=='R'){
+        PassengerRequestsDriver(userData);
+    }
+}
+
+
+function doesDriverExist(driverData){
     var exists = false;
-    new_driver['lat']   = lat;
-    new_driver['lon']   = lon;
-    new_driver['phone'] = phone;
-    new_driver['name']  = name;
-    console.log("Incoming phone number: " + phone);
     for (var i = 0; i < drivers.length && !exists; i++) {
         var old_driver_str = drivers[i];
         var old_driver = JSON.parse(old_driver_str);
         //console.log("Checking against: " + old_driver['phone']);
-        if (old_driver['phone'] == new_driver['phone']) {
+        if (old_driver['phone'] == driverData['phone']) {
             exists = true;
+            /*Updating Driver Information */
             old_driver['lat'] = new_driver['lat'];
             old_driver['lon'] = new_driver['lon'];
             old_driver['name'] = new_driver['name'];
             console.log('updateDriver');
+            return true;
         }
     }
-    if (!exists) {
-        drivers.push(JSON.stringify(new_driver));
-        console.log('registerDriver');
+    return false;
+}
+
+
+function handleDriverRequest(driverData){
+    if (!doesDriverExist(driverData)){
+        regsiterDriver(driverData);
     }
-    console.log('\n');
+
+    if(driverData['type']=='S'){
+        driverRequestsRider(driverData);
+    }
+}
+
+function registerDriver(driverData) {
+    var new_driver = {};
+    
+    new_driver['lat']   = driverData['lat'];
+    new_driver['lon']   = driverData['lon'];
+    new_driver['phone'] = driverData['phone'];
+    new_driver['name']  = driverData['name'];
+    console.log("Incoming phone number: " + phone);
+    drivers.push(JSON.stringify(new_driver));
+    console.log('registerDriver');
 }
 
 // A handler so that the main handleRequest function can be swapped out with the SMS functionality easily
@@ -56,15 +86,22 @@ function handleList(data_list) {
     info['lon']     = data_list[2];
     info['phone']   = data_list[3];
     info['message'] = data_list[4];
+    info['name']    = data_list[5];
+
+    /*Checks for request type and calls requestHandlers accordingly*/
     if (info['type'] == 'S' || info['type'] == 'U') {
-        registerDriver(info['lat'], info['lon'], info['phone'], info['message']); // for now both go to the same function
+        registerDriver(info); // for now both go to the same function
+    }
+
+    if (info['type'] == 'D'){
+        handleDriverResponse(info);
+    }
+    if (info['type'] == 'R'){
+        handlePassengerResponse(info);
     }
     // This response is for debugging purposes and will eventually change.
-    var response_text = "Parsed input line for line (separated by '|' characters):\n";
-    for (var key in info) {
-        var tmp_str = key + '\t' + info[key] + '\n';
-        response_text += tmp_str;
-    }
+    var response_text = info['type']+'|'+info['lat']+'|'+info['lon']+'|'+info['phone']+'|'+info['message']+'|'+info['name'];
+    
     return response_text;
 }
 
@@ -94,7 +131,7 @@ function handleRequest(request, response){
     var raw_data = decode(request.url.slice(1));
     var data_list = raw_data.split('|');
     var response_text = '';
-    if (data_list.length == 5) {
+    if (data_list.length == 6) {
         response_text = handleList(data_list);
     } else {
         response_text = 'ERROR: Incorrect number of fields.\n';
