@@ -36,13 +36,10 @@ import com.example.student.ctexiv1.R;
 
 public class LocationActivity extends AppCompatActivity {
 
-    LocationManager locationManager;
-    double longitudeBest, latitudeBest;
-    double longitudeGPS, latitudeGPS;
-    double longitudeNetwork, latitudeNetwork;
-    TextView longitudeValueBest, latitudeValueBest;
-    TextView longitudeValueGPS, latitudeValueGPS;
-    TextView longitudeValueNetwork, latitudeValueNetwork;
+    protected LocationManager locationManager;
+    public LocationListener locationListenerGPS = null;
+    double longitudeBest;
+    double longitudeGPS;
 
 
     @Override
@@ -50,7 +47,11 @@ public class LocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        if (!checkLocation())
+            return;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
     }
 
     private boolean checkLocation() {
@@ -84,51 +85,12 @@ public class LocationActivity extends AppCompatActivity {
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
-    public void toggleGPSUpdates(View view) {
-        if (!checkLocation())
+    public void onStop() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
-            }
-            locationManager.removeUpdates(locationListenerGPS);
-
-
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2 * 60 * 1000, 10, locationListenerGPS);
-
-
+        }
+        locationManager.removeUpdates(locationListenerGPS);
+        super.onStop();
     }
-
-
-    private final LocationListener locationListenerGPS = new LocationListener() {
-        public void onLocationChanged(Location location) {
-            longitudeGPS = location.getLongitude();
-            latitudeGPS = location.getLatitude();
-
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    longitudeValueGPS.setText(longitudeGPS + "");
-                    latitudeValueGPS.setText(latitudeGPS + "");
-                    Toast.makeText(LocationActivity.this, "GPS Provider update", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-
-        @Override
-        public void onStatusChanged(String s, int i, Bundle bundle) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String s) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String s) {
-
-        }
-    };
-
 }
 
