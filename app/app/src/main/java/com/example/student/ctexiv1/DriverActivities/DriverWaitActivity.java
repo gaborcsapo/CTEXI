@@ -8,6 +8,7 @@ import com.android.volley.Request;
 import android.content.Context;
 import com.example.student.ctexiv1.R;
 import com.example.student.ctexiv1.Utils.LastLocationProvider;
+import com.example.student.ctexiv1.Utils.LocationActivity;
 import com.example.student.ctexiv1.Utils.RequestSingleton;
 import com.example.student.ctexiv1.Utils.ServerCallback;
 
@@ -23,7 +24,7 @@ public class DriverWaitActivity extends AppCompatActivity {
     protected void waitForRequest(){
 
 
-        final Intent i = new Intent(this, LastLocationProvider.class);
+        final Intent i = new Intent(this, LocationActivity.class);
         RequestSingleton.getInstance(this).addToGETRequestQueue("S|0.834|28.577|0097126352855|Chimamanda_Adichie|anyad", new ServerCallback() {
             @Override
             public void onSuccess(String result) {

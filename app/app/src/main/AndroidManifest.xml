@@ -33,7 +33,8 @@
         <activity android:name=".RiderActivities.RiderSecondActivity" />
         <activity android:name=".DriverActivities.DriverWaitActivity" />
         <activity android:name=".RiderActivities.RiderWaitActivity" />
-        <activity android:name=".DriverActivities.DriverThirdActivity"></activity>
+        <activity android:name=".DriverActivities.DriverThirdActivity" />
+        <activity android:name=".Utils.LocationActivity"></activity>
     </application>
 
 </manifest>
