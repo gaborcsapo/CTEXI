@@ -58,6 +58,26 @@ public class RequestSingleton {
         getRequestQueue().add(stringRequest);
     }
 
+    public void addToPOSTRequestQueue(final String req, final ServerCallback callback) {
+
+        String url ="https://stark-coast-40612.herokuapp.com/" + req;
+
+        stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("myTag", response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("myTag", error.toString());
+            }
+        });
+        getRequestQueue().add(stringRequest);
+    }
+
+
     public StringRequest getStringRequest() {
         return stringRequest;
     }

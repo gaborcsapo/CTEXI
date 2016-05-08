@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.android.volley.Request;
+import android.content.Context;
 import com.example.student.ctexiv1.R;
+import com.example.student.ctexiv1.Utils.LastLocationProvider;
 import com.example.student.ctexiv1.Utils.RequestSingleton;
 import com.example.student.ctexiv1.Utils.ServerCallback;
 
@@ -19,8 +22,9 @@ public class DriverWaitActivity extends AppCompatActivity {
 
     protected void waitForRequest(){
 
-        final Intent i = new Intent(this, DriverSecondActivity.class);
-        RequestSingleton.getInstance(this).addToGETRequestQueue("S|0.834|28.577|0097126352855|Chimamanda_Adichie", new ServerCallback() {
+
+        final Intent i = new Intent(this, LastLocationProvider.class);
+        RequestSingleton.getInstance(this).addToGETRequestQueue("S|0.834|28.577|0097126352855|Chimamanda_Adichie|anyad", new ServerCallback() {
             @Override
             public void onSuccess(String result) {
 

@@ -20,11 +20,15 @@ public class RiderWaitActivity extends UserTemplate {
 
     protected void sendRequest(){
         final Intent i = new Intent(this, RiderSecondActivity.class);
+
+
+
         RequestSingleton.getInstance(this).addToGETRequestQueue("S|0.834|28.577|0097126352855|Chimamanda_Adichie", new ServerCallback() {
             @Override
             public void onSuccess(String result) {
 
                 String[] parsedData = result.split("|");
+
                 i.putExtra("PassedMessage", getIntent().getStringExtra("PassedMessage"));
                 i.putExtra("PassedName", parsedData[5]);
                 i.putExtra("PassedNumber", parsedData[3]);

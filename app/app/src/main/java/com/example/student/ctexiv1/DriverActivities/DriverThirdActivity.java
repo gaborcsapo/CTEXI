@@ -22,6 +22,8 @@ public class DriverThirdActivity extends UserTemplate implements OnMapReadyCallb
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        loadNameNumberMessage();
+
         addMarker(getIntent().getDoubleExtra("PassedLat", 0), getIntent().getDoubleExtra("PassedLong", 0));
     }
 

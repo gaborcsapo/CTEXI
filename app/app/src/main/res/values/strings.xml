@@ -60,4 +60,6 @@
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyD2n3F0oVUxCwZJbq7YZHaeL6ZaktbEuXQ</string>
     <string name="driverannounce">Your driver is:</string>
     <string name="arrival">He arrives in x min</string>
+    <string name="resume">Resume</string>
+    <string name="pause">Pause</string>
 </resources>

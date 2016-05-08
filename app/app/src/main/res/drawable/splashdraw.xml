@@ -3,11 +3,9 @@
 
     <item
         android:drawable="@color/colorPrimary"/>
-
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@mipmap/ic_launcher"/>
-    </item>
-
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+    />
 </layer-list>

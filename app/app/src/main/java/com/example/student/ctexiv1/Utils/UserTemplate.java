@@ -37,10 +37,10 @@ import com.android.volley.toolbox.HurlStack;
  */
 public class UserTemplate extends AppCompatActivity{
 
-    protected GoogleMap mMap;
     protected String Name;
     protected String Number;
     protected String Message;
+    GoogleMap mMap;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,7 +116,7 @@ public class UserTemplate extends AppCompatActivity{
     }
 
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        GoogleMap mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
@@ -124,10 +124,10 @@ public class UserTemplate extends AppCompatActivity{
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
-    public void addMarker(double x, double y){
-        LatLng newmarker = new LatLng(x, y);
-        mMap.addMarker(new MarkerOptions().position(newmarker).title("Your rider is here"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(newmarker));
+    protected void addMarker(double passedLat, double passedLong) {
+        LatLng marker = new LatLng(passedLat, passedLong);
+        mMap.addMarker(new MarkerOptions().position(marker).title("Your Rider is here"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
     }
 
     public void onCancel(View view){
