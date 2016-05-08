@@ -1,5 +1,7 @@
 /* CREDENTIALS */
 var messageBirdKey= 'test_WKqa20Mhy44OIWt9Rv9TiDCKU';
+var messageBirdLiveKey='live_cLn2Ja8D4QEsaJmVD55WUubNk';
+
 
 
 // Import the HTTP module
@@ -24,24 +26,61 @@ function decode(str) {
 
 function findClosestDriver(userData){
     console.log("Finding closest driver for rider");
+    var rider_lat = userData['lat'];
+    var rider_lon = userData['lon'];
     var tmp_driver, tmp_lat, tmp_lon; 
     var closest_driver;
     var minimum_distance = 1000000000;;
     for (key in drivers_list){
         tmp_driver = drivers_list[key];
+        console.log("temporary driver is :\n");
+        console.log(tmp_driver);
         tmp_lat = tmp_driver['lat'];
         tmp_lon = tmp_driver['lon'];
-        if (minimum_distance>calculateDistance(tmp_lat,tmp_lon)){
+        if (minimum_distance>(calculateDistance(rider_lat,rider_lon,tmp_lat,tmp_lon))) {
             closest_driver = tmp_driver;
+            console.log("closest driver found");
         }
     }
 
-    return closest_driver;s
+    return closest_driver;
+
 }
 
 
 function passengerRequestsDriver(userData){
     var closestRider = findClosestDriver(userData);
+    var riderMessage;
+    var driverMessage;
+    if (closestRider!=null){
+        riderMessage=createRiderMessage(closestRider);
+        driverMessage= createDriverMessage(userData);
+        console.log("Sending rider message")
+        sendMessage(['971563052935'] , riderMessage);
+    }
+}
+
+
+function createRiderMessage(userData){
+    
+    var riderMessage = "We found a driver for you:\n";
+    riderMessage += 'Driver: '+ userData['name'] + "\n";
+    riderMessage += "Contact: " + userData['phone'] + "\n";
+    riderMessage += "Lat,Lng: " +userData['lat']+","+userData['lon']+"\n";
+
+    return riderMessage;
+}
+
+function createDriverMessage(riderData){
+    var driver_message;
+
+    driver_message = "We found a rider for you:\n";
+    driver_message = "Rider: " + riderData['name'] + "\n";
+    driver_message = "Contact: "+ riderData['phone']+ "\n";
+    driver_message = "Lat,Lng: " + riderData['lat'] + ","+riderData['lon'] + "\n";
+    driver_message = "Message: " + riderData['message'] + "\n";
+
+    return driver_message;
 }
 
 function driverRequestsRider(userData){
@@ -92,6 +131,7 @@ function handleDriverRequest(driverData){
     if(driverData['type']=='S'){
         driverRequestsRider(driverData);
     }
+
 }
 
 function registerDriver(driverData) {
@@ -113,8 +153,8 @@ function handleList(data_list) {
     console.log("In handle_list");
     var info = {};
     info['type']    = data_list[0];
-    info['lat']     = data_list[1];
-    info['lon']     = data_list[2];
+    info['lat']     = parseFloat(data_list[1]);
+    info['lon']     = parseFloat(data_list[2]);
     info['phone']   = data_list[3];
     info['message'] = data_list[4];
     info['name']    = data_list[5];
@@ -136,9 +176,12 @@ function handleList(data_list) {
     return response_text;
 }
 
-function calculateDistance(destination, point){
-    var squareSum =Math.pow((destination.lat - point.lat),2) + Math.pow((destination.lng - point.lng));
-    return (Math.sqrt(squareSum));
+function calculateDistance(destination_lat, destination_lon, point_lat, point_lon){
+    console.log("in calculate distance");
+    var squareSum =Math.pow((destination_lat - point_lat),2) + Math.pow((destination_lon - point_lon),2);
+    var distance= Math.sqrt(squareSum);
+    console.log("Distance is", distance);
+    return (distance);
 
 }
 
@@ -181,4 +224,4 @@ server.listen(process.env.PORT || PORT, function(){
     console.log('Server listening on: http://localhost:%s', PORT);
 });
 
-//sendMessage(['971563052935'], 'MessageBird working');
+//sendMessage(['971563052935'], 'MessageBird working finally');
