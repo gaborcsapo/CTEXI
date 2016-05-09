@@ -21,6 +21,8 @@ public class RiderActivity extends UserTemplate {
         savePreferences();
         Intent i = new Intent(this, RiderWaitActivity.class);
         i.putExtra("PassedMessage", String.valueOf(((EditText) findViewById(R.id.Message)).getText()));
+        i.putExtra("PassedName", String.valueOf(((EditText) findViewById(R.id.Name)).getText()));
+        i.putExtra("PassedNumber", String.valueOf(((EditText) findViewById(R.id.Number)).getText()));
         startActivity(i);
     }
 

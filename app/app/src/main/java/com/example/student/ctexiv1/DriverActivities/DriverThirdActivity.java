@@ -12,8 +12,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 public class DriverThirdActivity extends UserTemplate implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +21,6 @@ public class DriverThirdActivity extends UserTemplate implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
 
         loadNameNumberMessage();
-
-        addMarker(getIntent().getDoubleExtra("PassedLat", 0), getIntent().getDoubleExtra("PassedLong", 0));
     }
 
     public void onCancel(View view){
