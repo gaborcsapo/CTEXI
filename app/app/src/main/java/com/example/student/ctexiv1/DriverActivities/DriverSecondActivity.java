@@ -2,6 +2,7 @@ package com.example.student.ctexiv1.DriverActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.student.ctexiv1.R;
@@ -10,10 +11,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
 public class DriverSecondActivity extends UserTemplate implements OnMapReadyCallback{
-
-    String Name;
-    String Number;
-    String Message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +21,8 @@ public class DriverSecondActivity extends UserTemplate implements OnMapReadyCall
         mapFragment.getMapAsync(this);
 
         loadNameNumberMessage();
+        Log.d("myTage", getIntent().getStringExtra("PassedLat") + getIntent().getStringExtra("PassedLong"));
 
-        addMarker(Double.parseDouble(getIntent().getStringExtra("PassedLat")), Double.parseDouble(getIntent().getStringExtra("PassedLong")));
     }
 
     public void onDecline(View view){
@@ -44,8 +41,8 @@ public class DriverSecondActivity extends UserTemplate implements OnMapReadyCall
         i.putExtra("PassedMessage", Message);
         i.putExtra("PassedName", Name);
         i.putExtra("PassedNumber", Number);
-        i.putExtra("PassedLat", Double.parseDouble(getIntent().getStringExtra("PassedLat")));
-        i.putExtra("PassedLong", Double.parseDouble(getIntent().getStringExtra("PassedLong")));
+        i.putExtra("PassedLat", getIntent().getStringExtra("PassedLat"));
+        i.putExtra("PassedLong", getIntent().getStringExtra("PassedLong"));
 
         startActivity(i);
         finish();

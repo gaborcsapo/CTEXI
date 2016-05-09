@@ -3,6 +3,7 @@ package com.example.student.ctexiv1.Utils;
 import android.Manifest;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -32,7 +33,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.student.ctexiv1.DriverActivities.DriverActivity;
+import com.example.student.ctexiv1.DriverActivities.DriverSecondActivity;
 import com.example.student.ctexiv1.R;
+import com.example.student.ctexiv1.RiderActivities.RiderActivity;
+import com.example.student.ctexiv1.RiderActivities.RiderSecondActivity;
 
 
 public class LocationSMSActivity extends AppCompatActivity {
@@ -46,7 +51,6 @@ public class LocationSMSActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (!checkLocation())
             return;
@@ -87,11 +91,13 @@ public class LocationSMSActivity extends AppCompatActivity {
     }
 
     public void onStop() {
+        super.onStop();
+        /*
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         locationManager.removeUpdates(locationListenerGPS);
-        super.onStop();
+        */
     }
 
     //SMS stuff
@@ -100,7 +106,39 @@ public class LocationSMSActivity extends AppCompatActivity {
     {
         PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, LocationSMSActivity.class), 0);
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(phoneNumber, null, message, pi, null);
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
+    }
+
+    protected void onSMS(String message){
+        SharedPreferences settings = getSharedPreferences("CHANGE_USER", MODE_PRIVATE);
+        Intent i = null;
+
+        if ((settings.getString("CHANGE_USER", "null")).equals("driver")){
+            i = new Intent(this, DriverSecondActivity.class);
+            String[] parsedData = message.split("\\|");
+
+            i.putExtra("PassedMessage", parsedData[4]);
+            i.putExtra("PassedName", parsedData[5]);
+            i.putExtra("PassedNumber", parsedData[3]);
+            i.putExtra("PassedLat", parsedData[1]);
+            i.putExtra("PassedLong", parsedData[2]);
+
+            startActivity(i);
+            finish();
+        } else {
+            i = new Intent(this, RiderSecondActivity.class);
+            String[] parsedData = message.split("\\|");
+
+            i.putExtra("PassedMessage", parsedData[4]);
+            i.putExtra("PassedName", parsedData[5]);
+            i.putExtra("PassedNumber", parsedData[3]);
+            i.putExtra("PassedLat", parsedData[1]);
+            i.putExtra("PassedLong", parsedData[2]);
+
+            startActivity(i);
+            finish();
+        }
+
     }
 }
 
