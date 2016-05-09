@@ -49,14 +49,16 @@ function findClosestDriver(userData){
 
 
 function passengerRequestsDriver(userData){
-    var closestRider = findClosestDriver(userData);
+    var closest_driver = findClosestDriver(userData);
     var riderMessage;
     var driverMessage;
-    if (closestRider!=null){
-        riderMessage=createRiderMessage(closestRider);
+    
+    if (closest_driver!=null){
+        riderMessage=createRiderMessage(closest_driver);
         driverMessage= createDriverMessage(userData);
-        console.log("Sending rider message")
-        sendMessage(['971563052935'] , riderMessage);
+        console.log("Sending rider message");
+        sendMessage(userData['phone'] , riderMessage);
+        sendMessage(closest_driver['phone'] , driverMessage);
     }
 }
 
@@ -64,7 +66,7 @@ function passengerRequestsDriver(userData){
 function createRiderMessage(userData){
     
     var riderMessage = "We found a driver for you:\n";
-    riderMessage += 'Driver: '+ userData['name'] + "\n";
+    riderMessage += "Driver: "+ userData['name'] + "\n";
     riderMessage += "Contact: " + userData['phone'] + "\n";
     riderMessage += "Lat,Lng: " +userData['lat']+","+userData['lon']+"\n";
 
@@ -75,10 +77,10 @@ function createDriverMessage(riderData){
     var driver_message;
 
     driver_message = "We found a rider for you:\n";
-    driver_message = "Rider: " + riderData['name'] + "\n";
-    driver_message = "Contact: "+ riderData['phone']+ "\n";
-    driver_message = "Lat,Lng: " + riderData['lat'] + ","+riderData['lon'] + "\n";
-    driver_message = "Message: " + riderData['message'] + "\n";
+    driver_message += "Rider: " + riderData['name'] + "\n";
+    driver_message += "Contact: "+ riderData['phone']+ "\n";
+    driver_message += "Lat,Lng: " + riderData['lat'] + ","+riderData['lon'] + "\n";
+    driver_message += "Message: " + riderData['message'] + "\n";
 
     return driver_message;
 }
@@ -224,4 +226,4 @@ server.listen(process.env.PORT || PORT, function(){
     console.log('Server listening on: http://localhost:%s', PORT);
 });
 
-//sendMessage(['971563052935'], 'MessageBird working finally');
+sendMessage(['971563052935'], 'MessageBird %0a working %0a finally');
