@@ -62,4 +62,5 @@
     <string name="arrival">He arrives in x min</string>
     <string name="resume">Resume</string>
     <string name="pause">Pause</string>
+    <string name="nomessage">No message</string>
 </resources>

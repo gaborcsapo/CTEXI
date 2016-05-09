@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".RiderActivities.RiderSecondActivity">
     <TextView
-        android:id="@+id/Name"
+        android:id="@+id/yourdriver"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,12 +34,14 @@
         android:textAlignment="center" />
     <TextView
         android:id="@+id/Message"
+        android:text="@string/nomessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:freezesText="true"
+        android:textAlignment="center" />
         android:textSize="20dp"/>
     <TextView
-        android:id="@+id/Name"
+        android:id="@+id/ETA"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
