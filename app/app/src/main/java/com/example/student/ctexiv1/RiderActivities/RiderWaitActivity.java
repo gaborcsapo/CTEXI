@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.student.ctexiv1.R;
+import com.example.student.ctexiv1.Utils.LocationSMSActivity;
 import com.example.student.ctexiv1.Utils.RequestSingleton;
-import com.example.student.ctexiv1.Utils.UserTemplate;
 import com.example.student.ctexiv1.Utils.ServerCallback;
 
-public class RiderWaitActivity extends UserTemplate {
+public class RiderWaitActivity extends LocationSMSActivity {
 
 
     @Override

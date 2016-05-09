@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ import android.widget.Toast;
 import com.example.student.ctexiv1.R;
 
 
-public class LocationActivity extends AppCompatActivity {
+public class LocationSMSActivity extends AppCompatActivity {
 
     protected LocationManager locationManager;
     public LocationListener locationListenerGPS = null;
@@ -91,6 +92,15 @@ public class LocationActivity extends AppCompatActivity {
         }
         locationManager.removeUpdates(locationListenerGPS);
         super.onStop();
+    }
+
+    //SMS stuff
+    // Method to send SMS.
+    protected void sendSMS(String phoneNumber, String message)
+    {
+        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, LocationSMSActivity.class), 0);
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, pi, null);
     }
 }
 
