@@ -48,7 +48,7 @@ public class DriverWaitActivity extends LocationSMSActivity {
                     public void run() {
                         Toast.makeText(DriverWaitActivity.this, "GPS Provider update" + longitudeGPS + latitudeGPS, Toast.LENGTH_SHORT).show();
                         final Intent i = new Intent(context, DriverSecondActivity.class);
-                        sendSMS("0971563052867", "S|" + latitudeGPS + "|" + latitudeGPS+ "|" + getIntent().getStringExtra("PassedNumber")+"||"+ getIntent().getStringExtra("PassedName"));
+                        sendSMS("0563052867", "S|" + latitudeGPS + "|" + latitudeGPS+ "|" + getIntent().getStringExtra("PassedNumber")+"||"+ getIntent().getStringExtra("PassedName"));
 
                         /*
                         RequestSingleton.getInstance(context).addToGETRequestQueue("S|" + latitudeGPS + "|" + latitudeGPS+ "|" + getIntent().getStringExtra("PassedNumber")+"||"+ getIntent().getStringExtra("PassedName"), new ServerCallback() {
@@ -88,6 +88,14 @@ public class DriverWaitActivity extends LocationSMSActivity {
             }
         };
 
+        //Send last location
+        String locationProvider = LocationManager.GPS_PROVIDER;
+        Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+        Toast.makeText(DriverWaitActivity.this, "GPS Provider update" + longitudeGPS + latitudeGPS, Toast.LENGTH_SHORT).show();
+        final Intent i = new Intent(context, DriverSecondActivity.class);
+        sendSMS("0563052867", "S|" + latitudeGPS + "|" + latitudeGPS+ "|" + getIntent().getStringExtra("PassedNumber")+"||"+ getIntent().getStringExtra("PassedName"));
+
+        //Listen to incoming SMSs
         IncomingSMS smslist = new IncomingSMS();
         smslist.setActivity(this);
         IntentFilter fltr_smsreceived = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
