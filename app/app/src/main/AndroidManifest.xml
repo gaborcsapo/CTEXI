@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -38,7 +39,7 @@
         <activity android:name=".RiderActivities.RiderWaitActivity" />
         <activity android:name=".DriverActivities.DriverThirdActivity" />
         <activity android:name=".Utils.LocationSMSActivity" />
-
+        <activity android:name=".Utils.MapActivity"></activity>
     </application>
 
 </manifest>

@@ -6,22 +6,21 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.RiderActivities.RiderWaitActivity;
-import com.example.student.ctexiv1.Utils.UserTemplate;
+import com.example.student.ctexiv1.Utils.FirstActivity;
 
-public class DriverActivity extends UserTemplate {
+public class DriverActivity extends FirstActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver);
-        loadSavedPreferences();
+        loadOwnInfo();
     }
 
     protected void setAvailable(View view) {
         Intent i = new Intent(this, DriverWaitActivity.class);
-        i.putExtra("PassedName", String.valueOf(((EditText) findViewById(R.id.Name)).getText()));
-        i.putExtra("PassedNumber", String.valueOf(((EditText) findViewById(R.id.Number)).getText()));
+        info.setName(String.valueOf(((EditText) findViewById(R.id.Name)).getText()));
+        info.setNumber(String.valueOf(((EditText) findViewById(R.id.Number)).getText()));
         startActivity(i);
     }
 }

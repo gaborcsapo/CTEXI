@@ -6,11 +6,12 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.Utils.UserTemplate;
+import com.example.student.ctexiv1.Utils.FirstActivity;
+import com.example.student.ctexiv1.Utils.MapActivity;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-public class DriverSecondActivity extends UserTemplate implements OnMapReadyCallback{
+public class DriverSecondActivity extends MapActivity implements OnMapReadyCallback{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,30 +21,17 @@ public class DriverSecondActivity extends UserTemplate implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        loadNameNumberMessage();
-        Log.d("myTage", getIntent().getStringExtra("PassedLat") + getIntent().getStringExtra("PassedLong"));
-
+        info.loadNameNumberMessage(this);
     }
 
     public void onDecline(View view){
-
         //send decline to server
-
         finish();
-
     }
+
     public void onAccept(View view){
-
         //sends accept to server
-
         Intent i = new Intent(this, DriverThirdActivity.class);
-
-        i.putExtra("PassedMessage", Message);
-        i.putExtra("PassedName", Name);
-        i.putExtra("PassedNumber", Number);
-        i.putExtra("PassedLat", getIntent().getStringExtra("PassedLat"));
-        i.putExtra("PassedLong", getIntent().getStringExtra("PassedLong"));
-
         startActivity(i);
         finish();
     }

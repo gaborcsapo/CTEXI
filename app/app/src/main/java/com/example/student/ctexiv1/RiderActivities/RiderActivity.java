@@ -6,23 +6,23 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.Utils.UserTemplate;
+import com.example.student.ctexiv1.Utils.FirstActivity;
 
-public class RiderActivity extends UserTemplate {
+public class RiderActivity extends FirstActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rider);
-        loadSavedPreferences();
+        loadOwnInfo();
     }
 
     protected void bookTaxi(View view){
-        savePreferences();
+        saveOwnInfo();
         Intent i = new Intent(this, RiderWaitActivity.class);
-        i.putExtra("PassedMessage", String.valueOf(((EditText) findViewById(R.id.Message)).getText()));
-        i.putExtra("PassedName", String.valueOf(((EditText) findViewById(R.id.Name)).getText()));
-        i.putExtra("PassedNumber", String.valueOf(((EditText) findViewById(R.id.Number)).getText()));
+        info.setMessage(String.valueOf(((EditText) findViewById(R.id.Message)).getText()));
+        info.setName(String.valueOf(((EditText) findViewById(R.id.Name)).getText()));
+        info.setNumber(String.valueOf(((EditText) findViewById(R.id.Number)).getText()));
         startActivity(i);
     }
 

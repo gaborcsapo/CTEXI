@@ -17,22 +17,16 @@ import com.example.student.ctexiv1.DriverActivities.DriverWaitActivity;
 /**
  * Created by student on 5/9/16.
  */
-public class IncomingSMS extends BroadcastReceiver {
+public class SMSReceiver extends BroadcastReceiver {
 
     public LocationSMSActivity parent = null;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        // Retrieves a map of extended data from the intent.
         final Bundle bundle = intent.getExtras();
-
         try {
-
             if (bundle != null) {
-
                 final Object[] pdusObj = (Object[]) bundle.get("pdus");
-
                 for (int i = 0; i < pdusObj.length; i++) {
 
                     SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
@@ -42,27 +36,18 @@ public class IncomingSMS extends BroadcastReceiver {
                     String message = currentMessage.getDisplayMessageBody();
 
                     Log.i("SmsReceiver", "senderNum: "+ senderNum + "; message: " + message);
-
-
-                    // Show Alert
                     int duration = Toast.LENGTH_LONG;
-                    Toast toast = Toast.makeText(context,
-                            "senderNum: "+ senderNum + ", message: " + message, duration);
+                    Toast toast = Toast.makeText(context, "senderNum: "+ senderNum + ", message: " + message, duration);
                     toast.show();
-
                     parent.onSMS(message);
-
-                } // end for loop
-            } // bundle is null
-
+                }
+            }
         } catch (Exception e) {
             Log.e("SmsReceiver", "Exception smsReceiver" +e);
-
         }
     }
 
     public void setActivity(LocationSMSActivity activity){
-        Log.d("myTag", "registering acti tyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
         parent = activity;
     }
 }
