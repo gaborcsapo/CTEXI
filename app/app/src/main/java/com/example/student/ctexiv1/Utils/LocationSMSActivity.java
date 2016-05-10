@@ -79,6 +79,11 @@ public class LocationSMSActivity extends AppCompatActivity implements LocationLi
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
             return;
         location = locationManager.getLastKnownLocation(provider);
+        if (location == null){
+            location = new Location("");
+            location.setLatitude(0.0d);
+            location.setLongitude(0.0d);
+        }
         Toast.makeText(mContext, "Lat: " + location.getLatitude() + " Long: " + location.getLongitude(), Toast.LENGTH_LONG).show();
     }
 
