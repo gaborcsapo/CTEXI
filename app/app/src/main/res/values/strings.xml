@@ -63,4 +63,5 @@
     <string name="resume">Resume</string>
     <string name="pause">Pause</string>
     <string name="nomessage">No message</string>
+    <string name="waiting">Sent request, waiting for response...</string>
 </resources>

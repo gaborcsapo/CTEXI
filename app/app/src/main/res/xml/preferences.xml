@@ -15,6 +15,14 @@
         android:summary="@string/changeusersummary">
     </Preference>
 
+    <EditTextPreference
+        android:key="PREF_SERVER"
+        android:title="Server phone number"
+        android:summary="Tap to enter new phone number"
+        android:dialogTitle="Enter text"
+        android:defaultValue="1"
+        android:inputType="number"/>
+
     <Preference
         android:title="@string/infotitle"
         android:summary="@string/info">

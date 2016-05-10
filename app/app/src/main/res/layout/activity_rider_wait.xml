@@ -7,6 +7,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center" >
     tools:context="com.example.student.ctexiv1.RiderActivities.RiderWaitActivity">
+    <ProgressBar
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:id="@+id/progressBar" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/waiting"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp" />
 </RelativeLayout>

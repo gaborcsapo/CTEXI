@@ -2,15 +2,16 @@ package com.example.student.ctexiv1.DriverActivities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.example.student.ctexiv1.R;
-import com.example.student.ctexiv1.Utils.UserTemplate;
-import com.google.android.gms.maps.GoogleMap;
+import com.example.student.ctexiv1.Utils.FirstActivity;
+import com.example.student.ctexiv1.Utils.MapActivity;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-public class DriverThirdActivity extends UserTemplate implements OnMapReadyCallback {
+public class DriverThirdActivity extends MapActivity implements OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,21 +21,18 @@ public class DriverThirdActivity extends UserTemplate implements OnMapReadyCallb
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        loadNameNumberMessage();
+        info.loadNameNumberMessage(this);
+        ((Chronometer)findViewById(R.id.Countdown)).setBase(100);
     }
 
     public void onCancel(View view){
-
         //cancels the booking
-
         finish();
     }
 
     @Override
     public void onBackPressed(){
-        savePreference("SavedName", Name);
-        savePreference("SavedNumber", Number);
-        savePreference("LocationMessage", (String) ((TextView) findViewById(R.id.Message)).getText());
+        info.saveBookingState(this);
         super.onBackPressed();
     }
 }
