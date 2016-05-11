@@ -3,15 +3,14 @@
 ## First Release
 - Has the basic UI implementation, with buttons leading to the correct pages
 - Displays a static response when driver is requested
-- ## First Release
-- Has the basic UI implementation, with buttons leading to the correct pages
-- Displays a static response when driver is requested
-- ## First Release
-- Has the basic UI implementation, with buttons leading to the correct pages
-- Displays a static response when driver is requested
-- ## First Release
-- Has the basic UI implementation, with buttons leading to the correct pages
-- Displays a static response when driver is requested
+## Second Release
+- Along with a slightly improved app, we also have a basic NODEjs server
+## Third Release
+- The app was heavily improved to accomodate request and responses from the server 
+- The server is not up to serve data to the app yet
+## Fourth Release
+- The app has access to location data, and sends and receives SMSs
+- The server accomodates requests, but doesn't store and match participants
 
 ## Introduction
 
@@ -47,14 +46,20 @@ The problem with the current taxi booking system lies in its decentralized and i
 These two sets of functionality will be implemented in two separate apps using the same back-end to communicate with a central server by SMS.
 Initially we intend to develop the "rider" app interface for Android phones, and then implement the "driver" interface other aspects of the project if time permits it.
 
-## The Server
+#Modifying the app
+If you would like to edit our code, you need to install Android Studio along with the Android SDK and the Java SDK. 
+Once you have these go to --> Select File | New | Project from Existing Sources from the main menu.
+Browse to the project that you'd like to import and click next
+Choose to "import the project from external model"
+Android Studio walks you through all the steps to successfully import the project e.g. importing external libraries, dependencies...
 
+Details on what each class and function does can be seenin the code. I don't want to create an object diagram, because the purpose, functionality and number of objects change frequently.
+
+# The Server
 The server runs on node.js. Currently it takes data over IP, but eventually it will be switched over to SMS.
 
-It takes in data in the following format:
+It takes in data in the following format, where the message could be the name, or the message, depending on the request type.:
 [type]|[latitude]|[longitude]|[phone#]|[message]|[name]
-
-Where the message could be the name, or the message, depending on the request type.
 
 ### Types of request:
 - S : Driver sends GET request to ask for a rider, response should be the rider he was matched with
