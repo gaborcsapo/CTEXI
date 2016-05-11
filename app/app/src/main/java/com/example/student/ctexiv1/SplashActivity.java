@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.student.ctexiv1.DriverActivities.DriverActivity;
+import com.example.student.ctexiv1.RiderActivities.RiderActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -13,10 +16,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SharedPreferences settings = getSharedPreferences("CHANGE_USER", MODE_PRIVATE);
         Intent i = null;
-        Log.d(SplashActivity.class.getSimpleName(), settings.getString("CHANGE_USER", "null"));
+
         if ((settings.getString("CHANGE_USER", "null")).equals("driver")){
             i = new Intent(this, DriverActivity.class);
-        } else if ((settings.getString("CHANGE_USER", "null")).equals("rider")) {
+        } else {
             i = new Intent(this, RiderActivity.class);
         }
         startActivity(i);

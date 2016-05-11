@@ -6,31 +6,53 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    tools:context="com.example.student.ctexiv1.RiderSecondActivity">
+    tools:context=".RiderActivities.RiderSecondActivity">
     <TextView
-        android:id="@+id/drivername"
+        android:id="@+id/yourdriver"
+        android:freezesText="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/driverannounce"
+        android:textSize="25dp"
+        android:layout_margin="10dp"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/Name"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/drivername"
-        android:textSize="50dp"/>
+        android:textSize="50dp"
+        android:textAlignment="center" />
     <TextView
-        android:id="@+id/drivernumber"
+        android:id="@+id/Number"
         android:freezesText="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/drivernumber"
-        android:textSize="35dp"/>
+        android:textSize="35dp"
+        android:textAlignment="center" />
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/Message"
+        android:text="@string/nomessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:freezesText="true"
+        android:textAlignment="center" />
         android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/ETA"
+        android:freezesText="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/arrival"
+        android:textSize="25dp"
+        android:textAlignment="center" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/cancel"
-        android:onClick="cancel"/>
+        android:onClick="onCancel"
+        android:layout_marginTop="30dp" />
 </LinearLayout>

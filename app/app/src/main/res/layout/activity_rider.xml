@@ -6,40 +6,53 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    tools:context="com.example.student.ctexiv1.RiderActivity">
+    tools:context=".RiderActivities.RiderActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ordertitle"
-        android:textSize="50dp"/>
+        android:textSize="50dp"
+        android:layout_margin="20dp"
+        android:textAlignment="center" />
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name" />
+        android:hint="@string/name"
+        android:textAlignment="center" />
     <EditText
-        android:id="@+id/number"
+        android:id="@+id/Number"
         android:layout_width="match_parent"
         android:inputType="textPassword|number"
         android:layout_height="wrap_content"
-        android:hint="@string/number" />
+        android:hint="@string/number"
+        android:textAlignment="center" />
     <EditText
-        android:id="@+id/message"
+        android:id="@+id/Message"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="100dp"
         android:gravity="top"
-        android:hint="@string/message" />
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/book"
-        android:onClick="bookTaxi"/>
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/previous"
-        android:onClick="previous"/>
+        android:hint="@string/message"
+        android:textAlignment="center" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book"
+            android:onClick="bookTaxi"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/previous"
+            android:onClick="previous" />
+    </RelativeLayout>
+
 </LinearLayout>

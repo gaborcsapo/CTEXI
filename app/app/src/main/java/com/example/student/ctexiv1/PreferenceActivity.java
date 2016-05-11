@@ -1,27 +1,14 @@
 package com.example.student.ctexiv1;
 
 
-import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
-import android.support.v7.app.ActionBar;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.MenuItem;
 
-import java.util.List;
+import com.example.student.ctexiv1.DriverActivities.DriverActivity;
+import com.example.student.ctexiv1.RiderActivities.RiderActivity;
+import com.example.student.ctexiv1.Utils.AppCompatPreferenceActivity;
 
 
 public class PreferenceActivity extends AppCompatPreferenceActivity {

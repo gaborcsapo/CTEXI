@@ -1,5 +1,6 @@
-package com.example.student.ctexiv1;
+package com.example.student.ctexiv1.Utils;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -7,11 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import com.example.student.ctexiv1.PreferenceActivity;
+import com.example.student.ctexiv1.R;
+
 
 /**
  * Created by student on 4/17/16.
  */
-public class UserClass extends AppCompatActivity{
+public class FirstActivity extends AppCompatActivity{
+    protected InfoSingleton info = InfoSingleton.getInstance();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,29 +39,22 @@ public class UserClass extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    protected void savePreferences(){
-        savePreference("name", String.valueOf(((EditText) findViewById(R.id.name)).getText()));
-        savePreference("number", String.valueOf(((EditText) findViewById(R.id.number)).getText()));
-    }
-
-    protected void savePreference(String key, String value) {
+    protected void saveOwnInfo() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(key, value);
+        editor.putString("OwnName", String.valueOf(((EditText) findViewById(R.id.Name)).getText()));
+        editor.putString("OwnNumber", String.valueOf(((EditText) findViewById(R.id.Number)).getText()));
         editor.commit();
     }
 
-    protected String loadPreference(String key){
+    protected void loadOwnInfo() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getString(key, "null");
-    }
-
-    protected void loadSavedPreferences() {
-        String name = loadPreference("name");
-        String number = loadPreference("number");
+        String name = sharedPreferences.getString("OwnName", "null");
+        String number = sharedPreferences.getString("OwnNumber", "null");
         if (!(name.equals("null")) )
-            ((EditText) findViewById(R.id.name)).setText(name);
+            ((EditText) findViewById(R.id.Name)).setText(name);
         if (!(number.equals("null")) )
-            ((EditText) findViewById(R.id.number)).setText(number);
-    }
+            ((EditText) findViewById(R.id.Number)).setText(number);
+   }
+
 }
