@@ -2,15 +2,24 @@
 var messageBirdKey= 'test_WKqa20Mhy44OIWt9Rv9TiDCKU';
 var messageBirdLiveKey='live_cLn2Ja8D4QEsaJmVD55WUubNk';
 
-
+// Twilio Credentials 
+var testSid = '89c38b2ab799fbfe3dc535ff5e28cf07';
+var testToken = '89c38b2ab799fbfe3dc535ff5e28cf07';
+var accountSid = 'AC9a306c9608a1a8276a29b4016a108b85'; 
+var authToken = 'b32465896bc3a465c0fa73bb00974c99';
+var twilioPhone = '+14023164493';
+var numberSID = 'PN464bae924276a482587b40a6121537f9';
+ctexi_sid = 'SK40e15a5d237ca8e1512fc37c562a73f8';
+ctexi_secret = 'kejoiS8RPTwc9mofJqftuzBCMC3l7Ua9';
 
 // Import the HTTP module
 var http = require('http');
-var twilio = require('twilio');
+var twilio = require('twilio')(numberSID, testToken); 
 var messageBird = require('messagebird')(messageBirdKey);
 var express = require('express');
 var logger = require('morgan');
 var app = express();
+var helper = require('./helper');
 //app.use(logger());
 // Define the port to listen to (80 is the standard for http:// over IP)
 const PORT=8000; 
@@ -37,7 +46,7 @@ function findClosestDriver(userData){
         console.log(tmp_driver);
         tmp_lat = tmp_driver['lat'];
         tmp_lon = tmp_driver['lon'];
-        if (minimum_distance>(calculateDistance(rider_lat,rider_lon,tmp_lat,tmp_lon))) {
+        if (minimum_distance>(helper.calculateDistance(rider_lat,rider_lon,tmp_lat,tmp_lon))) {
             closest_driver = tmp_driver;
             console.log("closest driver found");
         }
@@ -178,20 +187,26 @@ function handleList(data_list) {
     return response_text;
 }
 
-function calculateDistance(destination_lat, destination_lon, point_lat, point_lon){
-    console.log("in calculate distance");
-    var squareSum =Math.pow((destination_lat - point_lat),2) + Math.pow((destination_lon - point_lon),2);
-    var distance= Math.sqrt(squareSum);
-    console.log("Distance is", distance);
-    return (distance);
 
+
+function sendTwilioMessage(msg, sender, receiver){
+    var params = { 
+        to: sender, 
+        from: receiver, 
+        body: msg,   
+    }
+
+    twilio.messages.create( params, function(err, message) { 
+        console.log(err);
+        console.log(message.sid); 
+    }); 
 }
 
 function sendMessage(recipients, message){
     var params = {
         'originator': 'MessageBird',
         'recipients': recipients, // recipients is an array
-        'body': message
+        'body': message,
     };
 
     messageBird.messages.create(params, function (err, data) {
@@ -226,4 +241,5 @@ server.listen(process.env.PORT || PORT, function(){
     console.log('Server listening on: http://localhost:%s', PORT);
 });
 
-sendMessage(['971563052935'], 'MessageBird %0a working %0a finally');
+//sendMessage(['971563052935'], 'MessageBird %0a working %0a finally');
+//sendTwilioMessage("Testing twilio's message service", twilioPhone, '971563052935');
