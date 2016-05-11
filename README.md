@@ -9,11 +9,14 @@
 First 
 - Has the basic UI implementation, with buttons leading to the correct pages
 - Displays a static response when driver is requested
+
 Second 
 - Along with a slightly improved app, we also have a basic NODEjs server
+
 Third 
 - The app was heavily improved to accomodate request and responses from the server 
 - The server is not up to serve data to the app yet
+
 Fourth 
 - The app has access to location data, and sends and receives SMSs
 - The server accomodates requests, but doesn't store and match participants
