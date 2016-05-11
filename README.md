@@ -1,5 +1,10 @@
 # CTEXI Android App
 
+###The team
+- commits made by gc1569 and STUDENT are Gabor
+- wld224 Leigthon
+- ma3585 Muaz
+
 ### First Release
 - Has the basic UI implementation, with buttons leading to the correct pages
 - Displays a static response when driver is requested
