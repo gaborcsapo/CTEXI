@@ -57,10 +57,13 @@ Initially we intend to develop the "rider" app interface for Android phones, and
 
 #Modifying the app
 If you would like to edit our code, you need to install Android Studio along with the Android SDK and the Java SDK. 
-Once you have these go to --> Select File | New | Project from Existing Sources from the main menu.
+Once you have these, clone the project and go to --> Select File | New | Project from Existing Sources from the main menu.
 Browse to the project that you'd like to import and click next
 Choose to "import the project from external model"
 Android Studio walks you through all the steps to successfully import the project e.g. importing external libraries, dependencies...
+Then you have to download "Volley" 
+Next, you have to comment out from volley build.gradle the line "apply from: 'bintray.gradle'"
+And go to File --> New --> Import Module --> [select location] and name the module "VolleyX"
 
 Details on what each class and function does can be seenin the code. I don't want to create an object diagram, because the purpose, functionality and number of objects change frequently.
 
